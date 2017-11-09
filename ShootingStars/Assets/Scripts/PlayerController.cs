@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Boundary
@@ -13,12 +14,14 @@ public class PlayerController : MonoBehaviour
     public GameObject shot;
     public Transform shotSpawn;
     public Boundary boundary;
+    public Text gradeText;
 
     public float speed;
     public float tilt;
     public float fireRate;
 
     private float nextFire;
+    private double grade;
 
     void Update ()
     {
@@ -46,4 +49,9 @@ public class PlayerController : MonoBehaviour
          );
          rigidBody.rotation = Quaternion.Euler (0.0f, 0.0f, rigidBody.velocity.x * -tilt);
      }
+
+    void SetGradeText ()
+    {
+        gradeText.text = "Grade: " + grade.ToString();
+    }
 }
