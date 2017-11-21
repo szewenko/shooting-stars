@@ -4,8 +4,12 @@ using System.Collections;
 
 public class Selector_main_menu : MonoBehaviour {
 
-	public int tryb = 1;
-	private Rigidbody rb;
+	public int mode = 1;
+    private float[] position_mode_1 = { (float)0.05, (float)0.156, (float)0.4 };
+    private float[] position_mode_2 = { (float)0.05, (float)0.058, (float)0.4 };
+    private float[] position_mode_3 = { (float)0.05, (float)-0.03, (float)0.4 };
+    private float[] position_mode_4 = { (float)0.05, (float)-0.123, (float)0.4 };
+    private Rigidbody rb;
 	Vector3 position;
 
 	// Use this for initialization
@@ -16,44 +20,52 @@ public class Selector_main_menu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.UpArrow)) {
-			tryb--;
-			if (tryb <1)
-				tryb = 4;
+			mode--;
+			if (mode <1) mode = 4;
 		}
+
 		if (Input.GetKeyDown (KeyCode.DownArrow)){
-			tryb++;
-			if (tryb > 4)
-				tryb = 1;
+			mode++;
+			if (mode > 4) mode = 1;
 			}
 
-		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)){
+            switch (mode)
+            {
+                case 1:
+                    SceneManager.LoadScene("_Scenes/Game");
+                    break;
+                case 2:
+                    SceneManager.LoadScene("_Scenes/Help_menu");
+                    break;
+                case 3:
+                    SceneManager.LoadScene("_Scenes/About_menu");
+                    break;
+                case 4:
+                    Application.Quit();
+                    break;
+                default:
+                    break;
+            }
+		}
+
+        switch (mode)
         {
-			if (tryb == 1) {
-                SceneManager.LoadScene ("_Scenes/Game");
-            }
-			if (tryb == 2) {
-                SceneManager.LoadScene("_Scenes/Help_menu");
-            }
-			if (tryb == 3) {
-                SceneManager.LoadScene("_Scenes/About_menu");
-            }
-			if (tryb == 4) {
-				Application.Quit();
-			}
-		}
-
-		if (tryb == 1) {
-			position.Set((float)0.05, (float)0.156, (float)0.4);
-		}
-		if (tryb == 2) {
-			position.Set((float)0.05, (float)0.058, (float)0.4);
-		}
-		if (tryb == 3) {
-			position.Set((float)0.05, (float)-0.03, (float)0.4);
-		}
-		if (tryb == 4) {
-			position.Set((float)0.05, (float)-0.123, (float)0.4);
-		}
+            case 1:
+                position.Set(position_mode_1[0], position_mode_1[1], position_mode_1[2]);
+                break;
+            case 2:
+                position.Set(position_mode_2[0], position_mode_2[1], position_mode_2[2]);
+                break;
+            case 3:
+                position.Set(position_mode_3[0], position_mode_3[1], position_mode_3[2]);
+                break;
+            case 4:
+                position.Set(position_mode_4[0], position_mode_4[1], position_mode_4[2]);
+                break;
+            default:
+                break;
+        }
 		rb.MovePosition(position);
 	}
 }
