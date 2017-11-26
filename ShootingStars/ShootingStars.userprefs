@@ -1,12 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DestroyByContact.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="28" Column="17" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DestroyByBoundary.cs" Line="5" Column="49" />
+      <File FileName="Assets\Scripts\DestroyByContact.cs" Line="35" Column="4" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Arek\Documents\GitHub\ShootingStars\Assets\Scripts\DestroyByBoundary.cs" line="8" column="1" />
+      <Breakpoint file="C:\Users\Arek\Documents\GitHub\ShootingStars\Assets\Scripts\DestroyByContact.cs" line="28" column="1" />
+      <Breakpoint file="C:\Users\Arek\Documents\GitHub\ShootingStars\Assets\Scripts\DestroyByContact.cs" line="29" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
