@@ -37,10 +37,6 @@ public class GameController : MonoBehaviour {
         if (restart)
         {
             SceneManager.LoadScene("_Scenes/Game_over_menu");
-            //if (Input.GetKeyDown(KeyCode.R))
-            //{
-            //    SceneManager.LoadScene("_Scenes/Game_over_menu");
-            //}
         }
     }
 
@@ -60,8 +56,6 @@ public class GameController : MonoBehaviour {
             yield return new WaitForSeconds(waveWait);
 
             if (gameOver) {
-                //SceneManager.LoadScene("_Scenes/Game_over_menu");
-                //restartText.text = "Press 'R' for restart";
                 restart = true;
                 break;
             }
@@ -80,7 +74,6 @@ public class GameController : MonoBehaviour {
     }
 
     public void GameOver() {
-        //gameOverText.text = "Game over!";
         gameOver = true;
     }
 }
