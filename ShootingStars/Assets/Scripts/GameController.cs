@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
@@ -19,7 +18,7 @@ public class GameController : MonoBehaviour {
 
     private bool gameOver;
     private bool restart;
-    private int score;
+    static public int score;
 
     void Start()
     {
@@ -37,10 +36,11 @@ public class GameController : MonoBehaviour {
     {
         if (restart)
         {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                Application.LoadLevel(Application.loadedLevel);
-            }
+            SceneManager.LoadScene("_Scenes/Game_over_menu");
+            //if (Input.GetKeyDown(KeyCode.R))
+            //{
+            //    SceneManager.LoadScene("_Scenes/Game_over_menu");
+            //}
         }
     }
 
@@ -60,7 +60,8 @@ public class GameController : MonoBehaviour {
             yield return new WaitForSeconds(waveWait);
 
             if (gameOver) {
-                restartText.text = "Press 'R' for restart";
+                //SceneManager.LoadScene("_Scenes/Game_over_menu");
+                //restartText.text = "Press 'R' for restart";
                 restart = true;
                 break;
             }
@@ -79,7 +80,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void GameOver() {
-        gameOverText.text = "Game over!";
+        //gameOverText.text = "Game over!";
         gameOver = true;
     }
 }
