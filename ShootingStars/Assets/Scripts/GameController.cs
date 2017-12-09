@@ -34,6 +34,12 @@ public class GameController : MonoBehaviour {
 
     void Update()
     {
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("_Scenes/Main_menu");
+        }
+
         if (restart)
         {
             SceneManager.LoadScene("_Scenes/Game_over_menu");
