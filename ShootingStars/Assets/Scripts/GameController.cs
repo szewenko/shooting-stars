@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour {
 
     void Update()
     {
+
         if (Input.GetKey(KeyCode.Escape))
         {
             SceneManager.LoadScene("_Scenes/Main_menu");
