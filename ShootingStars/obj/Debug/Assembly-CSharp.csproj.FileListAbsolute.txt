@@ -36,3 +36,4 @@ C:\Users\Arek\Documents\GitHub\ShootingStars\Temp\bin\Debug\UnityEngine.SpatialT
 C:\Users\Arek\Documents\GitHub\ShootingStars\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Arek\Documents\GitHub\ShootingStars\obj\Debug\Assembly-CSharp.dll
 C:\Users\Arek\Documents\GitHub\ShootingStars\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Arek\Documents\GitHub\ShootingStars\Temp\bin\Debug\Facebook.Unity.Settings.dll
