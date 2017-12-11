@@ -2,6 +2,8 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Linq;
 
 public class GameController : MonoBehaviour {
 
@@ -15,6 +17,7 @@ public class GameController : MonoBehaviour {
     public Text scoreText;
     public Text restartText;
     public Text gameOverText;
+	public Text levelText;
 
     private bool gameOver;
     private bool restart;
@@ -25,9 +28,13 @@ public class GameController : MonoBehaviour {
         score = 0;
         gameOver = false;
         restart = false;
+		LevelService.IsEnemiesCreationAllowed = true;
+		LevelService.CurrentLevel = 1;
 
         restartText.text = "";
         gameOverText.text = "";
+		levelText.text = "";
+
         UpdateScore();
         StartCoroutine (SpawnVawes());
     }
@@ -47,26 +54,37 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    IEnumerator SpawnVawes()
+	IEnumerator SpawnVawes(float customSpawnWait = 0.00f, int customHazardCount = 0)
 
     {
+		int count = customHazardCount != default(int) ? customHazardCount :hazardCount;
+		float wait = customSpawnWait != default(float) ? customSpawnWait : spawnWait;
         yield return new WaitForSeconds(startWait);
-        while (true)
+		int waveCounter = 0;
+		while (waveCounter < 3)
         {
-            for (int i = 0; i < hazardCount; i++) {
+			waveCounter++;
+			for (int i = 0; i < count; i++) {
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
                 Quaternion spawnRotation = Quaternion.identity;
                 Instantiate(hazard, spawnPosition, spawnRotation);
-                yield return new WaitForSeconds(spawnWait);
+				yield return new WaitForSeconds(wait);
             }
 
             yield return new WaitForSeconds(waveWait);
 
-            if (gameOver) {
-                restart = true;
-                break;
-            }
+			if (gameOver) {
+				restart = true;
+				break;
+			}
         }
+
+
+		if (waveCounter == 3) {
+			LevelService.IsNextLevelProcessingStarted = true;
+		}
+
+		UpdateScore ();
     }
 
     public void AddScore(int newScoreValue)
@@ -77,10 +95,34 @@ public class GameController : MonoBehaviour {
 
     void UpdateScore()
     {
-        scoreText.text = "Score: " + score.ToString();
+		StartCoroutine (UpdateCoroutine());
     }
 
     public void GameOver() {
         gameOver = true;
     }
+
+	private IEnumerator UpdateCoroutine()
+	{
+		LevelService.CurrentScore = score;
+		scoreText.text = "Score: " + LevelService.CurrentScore.ToString();
+		if (LevelService.IsNextLevelProcessingStarted) {
+			LevelService.IsNextLevelProcessingStarted = false;	
+			yield return new WaitForSeconds (4);
+			LevelService.CurrentLevel++;
+			levelText.text = "Level " + (LevelService.CurrentLevel).ToString();
+			yield return new WaitForSeconds (2);
+			levelText.text = "";
+			LevelService.IsNextLevelProcessingStarted = false;
+			if (LevelService.CurrentLevel > 1) {
+				levelText.text = LevelService.CurrentLevel == 3 ? "Watch out !" : string.Empty;
+				yield return new WaitForSeconds (2);
+				levelText.text = "";		
+				StartCoroutine (SpawnVawes (0.4f / LevelService.CurrentLevel, LevelService.CurrentLevel * 10));
+			} else {
+				
+				StartCoroutine (SpawnVawes ());
+			}
+		}
+	}
 }
