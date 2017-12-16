@@ -18,14 +18,17 @@ public class GameController : MonoBehaviour {
     public Text restartText;
     public Text gameOverText;
 	public Text levelText;
+    public Text livesText;
 
     private bool gameOver;
     private bool restart;
     static public int score;
+    static public int lives;
 
     void Start()
     {
         score = 0;
+        lives = 3;
         gameOver = false;
         restart = false;
 		LevelService.IsEnemiesCreationAllowed = true;
@@ -36,6 +39,7 @@ public class GameController : MonoBehaviour {
 		levelText.text = "";
 
         UpdateScore();
+        UpdateLives();
         StartCoroutine (SpawnVawes());
     }
 
@@ -98,6 +102,17 @@ public class GameController : MonoBehaviour {
 		StartCoroutine (UpdateCoroutine());
     }
 
+    public void SubLives(int newLivesValue)
+    {
+        lives -= newLivesValue;
+        UpdateLives();
+    }
+
+    void UpdateLives()
+    {
+        livesText.text = "Lives: " + lives;
+    }
+
     public void GameOver() {
         gameOver = true;
     }
@@ -105,8 +120,10 @@ public class GameController : MonoBehaviour {
 	private IEnumerator UpdateCoroutine()
 	{
 		LevelService.CurrentScore = score;
-		scoreText.text = "Score: " + LevelService.CurrentScore.ToString();
-		if (LevelService.IsNextLevelProcessingStarted) {
+        LevelService.CurrentLives = lives;
+        scoreText.text = "Score: " + LevelService.CurrentScore.ToString();
+        livesText.text = "Lives: " + LevelService.CurrentLives.ToString();
+        if (LevelService.IsNextLevelProcessingStarted) {
 			LevelService.IsNextLevelProcessingStarted = false;	
 			yield return new WaitForSeconds (4);
 			LevelService.CurrentLevel++;

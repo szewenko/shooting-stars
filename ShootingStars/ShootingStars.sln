@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShootingStars", "Assembly-CSharp.csproj", "{D05EEA57-9F48-6978-955A-57907B00E771}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShootingStars", "ShootingStars.csproj", "{195367F4-F7A7-C09C-EBE3-D8BCA7A052D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D05EEA57-9F48-6978-955A-57907B00E771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D05EEA57-9F48-6978-955A-57907B00E771}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D05EEA57-9F48-6978-955A-57907B00E771}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D05EEA57-9F48-6978-955A-57907B00E771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{195367F4-F7A7-C09C-EBE3-D8BCA7A052D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{195367F4-F7A7-C09C-EBE3-D8BCA7A052D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{195367F4-F7A7-C09C-EBE3-D8BCA7A052D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{195367F4-F7A7-C09C-EBE3-D8BCA7A052D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
