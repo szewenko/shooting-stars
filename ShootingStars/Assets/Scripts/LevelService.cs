@@ -14,7 +14,13 @@ public static class LevelService{
 		set;
 	}
 
-	public static bool IsEnemiesCreationAllowed {
+    public static int CurrentLives
+    {
+        get;
+        set;
+    }
+
+    public static bool IsEnemiesCreationAllowed {
 		get;
 		set;
 	}
