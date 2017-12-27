@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour {
 
             yield return new WaitForSeconds(waveWait);
 
-			if (gameOver) {
+			if (gameOver && LevelService.CurrentLives == 0) {
 				restart = true;
 				break;
 			}
