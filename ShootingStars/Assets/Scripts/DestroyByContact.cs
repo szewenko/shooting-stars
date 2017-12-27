@@ -28,17 +28,25 @@ public class DestroyByContact : MonoBehaviour {
     {
         Debug.Log (other.name);
         Instantiate(explosion, transform.position, transform.rotation);
-        if (other.tag == "Player")
+		if (other.tag == "Player")
         {
             Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
             gameController.SubLives(livesValue);
-            gameController.GameOver();
+			gameController.AddScore(scoreValue);
+			if (LevelService.CurrentLives == 0) {
+				gameController.GameOver();
+				Destroy(other.gameObject);
+				Destroy(gameObject);
+			}
         }
+
 		if (other.name != "DestroyByBoundary")
 		{
-			gameController.AddScore(scoreValue);
-			Destroy(other.gameObject);
-			Destroy(gameObject);
+			if(gameObject.name.Contains("Asteroid"))
+			{
+		 	 gameController.AddScore(scoreValue);
+			 Destroy(gameObject);
+			}
 		}
     }
     
