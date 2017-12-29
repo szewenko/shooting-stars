@@ -8,11 +8,16 @@ using System.Linq;
 public class GameController : MonoBehaviour {
 
     public GameObject hazard;
+    public GameObject live1;
+    public GameObject live2;
+    public GameObject live3;
     public Vector3 spawnValues;
     public int hazardCount;
     public float spawnWait;
     public float startWait;
     public float waveWait;
+
+
 
     public Text scoreText;
     public Text restartText;
@@ -106,6 +111,19 @@ public class GameController : MonoBehaviour {
     {
         lives -= newLivesValue;
         UpdateLives();
+    }
+
+    public void RemoveVehLive1()
+    {
+        Destroy(live1);
+    }
+    public void RemoveVehLive2()
+    {
+        Destroy(live2);
+    }
+    public void RemoveVehLive3()
+    {
+        Destroy(live3);
     }
 
     void UpdateLives()

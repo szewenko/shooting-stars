@@ -22,6 +22,7 @@ public class DestroyByContact : MonoBehaviour {
         {
             Debug.Log("Cannot find 'GameController' script");
         }
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -33,11 +34,21 @@ public class DestroyByContact : MonoBehaviour {
             Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
             gameController.SubLives(livesValue);
 			gameController.AddScore(scoreValue);
-			if (LevelService.CurrentLives == 0) {
-				gameController.GameOver();
-				Destroy(other.gameObject);
-				Destroy(gameObject);
-			}
+
+            if (LevelService.CurrentLives == 2)
+            {
+                gameController.RemoveVehLive3();
+            }
+            if (LevelService.CurrentLives == 1)
+            {
+                gameController.RemoveVehLive2();
+            }
+            if (LevelService.CurrentLives == 0) {
+            gameController.RemoveVehLive1();
+            gameController.GameOver();
+			Destroy(other.gameObject);
+			Destroy(gameObject);
+            }
         }
 
 		if (other.name != "DestroyByBoundary")
