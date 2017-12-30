@@ -69,6 +69,15 @@ public class GameController : MonoBehaviour {
 		int count = customHazardCount != default(int) ? customHazardCount :hazardCount;
 		float wait = customSpawnWait != default(float) ? customSpawnWait : spawnWait;
         yield return new WaitForSeconds(startWait);
+		levelText.text = "\t 3";
+		yield return new WaitForSeconds(1);
+		levelText.text = "\t 2";
+		yield return new WaitForSeconds(1);
+		levelText.text = "\t 1";
+		yield return new WaitForSeconds(1);
+		levelText.text = "\t GO !";
+		yield return new WaitForSeconds(1);
+		levelText.text = "";
 		int waveCounter = 0;
 		while (waveCounter < 3)
         {
