@@ -52,10 +52,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\NewBehaviourScript.cs" />
-     <Compile Include="Assets\Scripts\DestroyByBoundary.cs" />
+     <Compile Include="Assets\Scripts\BGScroller.cs" />
      <Compile Include="Assets\Scripts\DestroyByContact.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\LevelService.cs" />
+     <Compile Include="Assets\Scripts\Maneuver.cs" />
      <Compile Include="Assets\Scripts\Mover.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\RandomRotator.cs" />
@@ -63,6 +64,7 @@
      <Compile Include="Assets\Scripts\Selector_game_over_menu.cs" />
      <Compile Include="Assets\Scripts\Selector_help_menu.cs" />
      <Compile Include="Assets\Scripts\Selector_main_menu.cs" />
+     <Compile Include="Assets\Scripts\WeaponController.cs" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>C:/Users/Arek/Documents/GitHub/ShootingStars/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
