@@ -28,7 +28,16 @@ public class DestroyByContact : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         Debug.Log (other.name);
-        Instantiate(explosion, transform.position, transform.rotation);
+
+        if (other.CompareTag("Enemy"))
+        {
+            return;
+        }
+        if (explosion != null)
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+        }
+
 		if (other.tag == "Player")
         {
             Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
@@ -58,7 +67,12 @@ public class DestroyByContact : MonoBehaviour {
 		 	 gameController.AddScore(scoreValue);
 			 Destroy(gameObject);
 			}
-		}
+            if (gameObject.name.Contains("Enemy Ship"))
+            {
+                gameController.AddScore(scoreValue);
+                Destroy(gameObject);
+            }
+        }
     }
     
 }

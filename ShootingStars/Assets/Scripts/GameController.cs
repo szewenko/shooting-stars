@@ -7,7 +7,7 @@ using System.Linq;
 
 public class GameController : MonoBehaviour {
 
-    public GameObject hazard;
+    public GameObject[] hazards;
     public GameObject live1;
     public GameObject live2;
     public GameObject live3;
@@ -16,8 +16,6 @@ public class GameController : MonoBehaviour {
     public float spawnWait;
     public float startWait;
     public float waveWait;
-
-
 
     public Text scoreText;
     public Text restartText;
@@ -83,6 +81,7 @@ public class GameController : MonoBehaviour {
         {
 			waveCounter++;
 			for (int i = 0; i < count; i++) {
+                GameObject hazard = hazards[Random.Range(0, hazards.Length)];
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
                 Quaternion spawnRotation = Quaternion.identity;
                 Instantiate(hazard, spawnPosition, spawnRotation);
